@@ -30,20 +30,6 @@ public class UserController {
         return userDao.findByUserId(id);
     }
 
-    @PostMapping("/save")
-    public void saveUser(@RequestBody SignupResponse signupResponse){
-//        User user = new User();
-//        user.setUsername(signupResponse.getUsername());
-//        user.setPassword(signupResponse.getPassword());
-//        user.setEmail(signupResponse.getEmail());
-//        user.setName(signupResponse.getName());
-//        user.setLastname(signupResponse.getLastname());
-//        user.setEnabled(true);
-//        user.setRole("User");
-//        userDao.save(user);
-        System.out.println(signupResponse);
-    }
-
     @GetMapping(value = "/getcredentials")
     public User getCredentials() {
         HttpStatus status = HttpStatus.OK;

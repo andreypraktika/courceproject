@@ -8,7 +8,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("news")
-@CrossOrigin(origins = "*")
+@CrossOrigin("*")
 public class NewsController {
 
     @Autowired

@@ -14,10 +14,7 @@ const NaviBar = () => {
         </Nav>
         
         <Navbar.Collapse className="justify-content-end">
-        <Form>
-            <FormControl type="text" placeholder="Search" />
-            <Button variant="outline-primary">Search</Button>
-        </Form>
+            
         </Navbar.Collapse>
         </Container>
         

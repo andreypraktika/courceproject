@@ -27,12 +27,8 @@ public class TokenUtil implements Serializable {
 
     }
 
-    //retrieve expiration date from jwt token
-
     public Date getExpirationDateFromToken(String token) {
-
         return getClaimFromToken(token, Claims::getExpiration);
-
     }
 
     public <T> T getClaimFromToken(String token, Function<Claims, T> claimsResolver) {
@@ -43,9 +39,7 @@ public class TokenUtil implements Serializable {
     //for retrieveing any information from token we will need the secret key
 
     private Claims getAllClaimsFromToken(String token) {
-
         return Jwts.parser().setSigningKey(secret).parseClaimsJws(token).getBody();
-
     }
 
     //check if the token has expired

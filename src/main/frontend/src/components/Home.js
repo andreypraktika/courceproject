@@ -4,7 +4,7 @@ export default class Home extends Component {
     
     render() {
         return(
-                <p>Hello jopa</p>);
+                <p>main</p>);
     }
 
     componentDidMount() {

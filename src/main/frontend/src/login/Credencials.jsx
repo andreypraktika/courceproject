@@ -10,3 +10,4 @@ const Credencials = () => {
   });
 
 }
+export default Credencials;

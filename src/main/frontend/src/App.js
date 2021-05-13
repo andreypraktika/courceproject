@@ -8,7 +8,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import NaviBar from './components/NaviBar';
 import SignupForm from './signup/SignupForm';
 import Home from './components/Home';
-import Register from './signup/Register';
+import ReactCalendar from './components/ReactCalendar';
+
 
 const App = () => {
   return (

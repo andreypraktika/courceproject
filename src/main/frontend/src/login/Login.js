@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
-
+import {useHistory} from 'react-router-dom'
 export default class Login extends Component {
 
 	constructor(props) {
@@ -36,9 +36,8 @@ export default class Login extends Component {
 		}).then(response => {
 			if (response.status === 200) {
 				localStorage.setItem("username", this.state.username)
-				console.log("LOGGED IN!")
-				this.props.history.push('/');
-				// this.props.onLoggedIn()
+				console.log("LOGGED IN!");
+				this.props.history.push('/profile');
 			} else if (response.status === 401) {
 				this.setState({
 					message: "Wrong credentials"
@@ -56,6 +55,7 @@ export default class Login extends Component {
 		return (
 			<Form>
 				<Form.Text className="text-muted">LOGIN</Form.Text>
+				<Form.Text> </Form.Text>
 				<Form.Text className="text-muted">
 					{this.state.message ? this.state.message : ''}
 				</Form.Text>
