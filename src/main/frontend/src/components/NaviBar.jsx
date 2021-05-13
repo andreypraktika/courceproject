@@ -5,9 +5,10 @@ const NaviBar = () => {
     <>
     <Navbar bg="light" variant="light">
         <Container className="p-2">
-        <Navbar.Brand className="ml-3" href="/">My application</Navbar.Brand>
+        <Navbar.Brand className="ml-3" href="/home">My application</Navbar.Brand>
         <Nav>
             <Nav.Link href="/profile">Profile</Nav.Link>
+            <Nav.Link href="/news">News</Nav.Link>
             <Nav.Link href="/login">Login</Nav.Link>
             <Nav.Link href="/signup">Sign up</Nav.Link>
         </Nav>

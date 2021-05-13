@@ -38,7 +38,7 @@ export default class Login extends Component {
 				localStorage.setItem("username", this.state.username)
 				console.log("LOGGED IN!")
 				this.props.history.push('/');
-				this.props.onLoggedIn()
+				// this.props.onLoggedIn()
 			} else if (response.status === 401) {
 				this.setState({
 					message: "Wrong credentials"

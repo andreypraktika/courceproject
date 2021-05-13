@@ -3,7 +3,6 @@ import {useFormik} from 'formik';
 import { Navbar, Nav, Form, NavItem, NavDropdown, MenuItem, FormControl, Button, Container } from 'react-bootstrap'; 
 import axios from 'axios';
 
-
  const validate = values => {
    const errors = {};
    if (!values.firstName) {
@@ -11,19 +10,16 @@ import axios from 'axios';
    } else if (values.firstName.length > 15) {
      errors.firstName = 'Must be 15 characters or less';
    }
- 
    if (!values.lastName) {
      errors.lastName = 'Required';
    } else if (values.lastName.length > 20) {
      errors.lastName = 'Must be 20 characters or less';
    }
- 
    if (!values.email) {
      errors.email = 'Required';
    } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
      errors.email = 'Invalid email address';
    }
- 
    return errors;
  };
  
@@ -39,15 +35,17 @@ import axios from 'axios';
      },
      validate,
      onSubmit: values => {
-       axios.post("http://localhost:8080/users/save", values).then(response => {
-         console.log(response)
+      fetch('/register', {
+         headers: {
+           'Content-Type':'application/json'
+         },
+         method:'POST',
+         body:JSON.stringify(values)
        })
-       .catch(error => console.log(error))
-     },
+     }
    });
    return (
      <form onSubmit={formik.handleSubmit}>
-
        <label htmlFor="username">Username</label>
        <input
          id="username"
@@ -57,7 +55,6 @@ import axios from 'axios';
          value={formik.values.username}
        />
        {formik.errors.username ? <div>{formik.errors.username}</div> : null}
-
        <label htmlFor="password">Password</label>
        <input
          id="password"

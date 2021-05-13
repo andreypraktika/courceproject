@@ -33,14 +33,15 @@ public class User {
     @Column(name = "role")
     private String role;
 
-
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "user_id")
     private List<Campaign> campaigns;
 
-    public User(String username, String password, Boolean enabled, String email, String role) {
+    public User(String username, String password, String name,  String lastname, Boolean enabled, String email, String role) {
         this.username = username;
         this.password = password;
+        this.name = name;
+        this.lastname = lastname;
         this.enabled = enabled;
         this.email = email;
         this.role = role;

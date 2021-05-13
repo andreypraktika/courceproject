@@ -8,6 +8,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import NaviBar from './components/NaviBar';
 import SignupForm from './signup/SignupForm';
 import Home from './components/Home';
+import Register from './signup/Register';
 
 const App = () => {
   return (
@@ -15,7 +16,7 @@ const App = () => {
       <div className="App">
         <NaviBar />
         <div className="App-content">
-          <Route path="/" component={Home}/>
+          <Route path="/home" component={Home}/>
           <Route path="/profile" component={ Profile }/>
           <Route path="/news" component={ News }/>
           <Route path="/login" component={ Login }/>

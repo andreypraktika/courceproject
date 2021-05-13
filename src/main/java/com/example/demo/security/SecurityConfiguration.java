@@ -1,6 +1,7 @@
 package com.example.demo.security;
 
 import com.example.demo.security.filter.JwtRequestFilter;
+import com.example.demo.security.jwt.TokenUtil;
 import com.example.demo.security.service.JwtAuthenticationEntryPoint;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
@@ -30,18 +31,19 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Autowired
     private JwtRequestFilter jwtRequestFilter;
-
+    @Autowired
+    private TokenUtil jwtTokenUtil;
     @Override
     protected void configure(HttpSecurity http) throws Exception {
+
         http
                 .csrf()
                 .disable()
                 .authorizeRequests()
                 .antMatchers("/authenticate").permitAll()
+                .antMatchers("/register").permitAll()
                 .anyRequest()
                 .authenticated()
-                .and()
-                .exceptionHandling().authenticationEntryPoint(jwtAuthenticationEntryPoint)
                 .and()
                 .exceptionHandling().authenticationEntryPoint(jwtAuthenticationEntryPoint).and().sessionManagement()
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS);
