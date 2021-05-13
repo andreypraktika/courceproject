@@ -2,7 +2,6 @@ package com.example.demo.security.filter;
 
 
 import com.example.demo.security.AppUserDetailsService;
-import com.example.demo.security.dto.AuthResultData;
 import com.example.demo.security.jwt.TokenUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -55,7 +54,7 @@ public static String ACCESS_TOKEN = "access_token";
 
         if (username != null && SecurityContextHolder.getContext().getAuthentication() == null) {
             UserDetails userDetails = this.jwtUserDetailsService.loadUserByUsername(username);
-            if (jwtTokenUtil.validateToken(jwtToken, userDetails)) {
+            if (jwtTokenUtil.validateToken(getAccessToken(cookies), userDetails)) {
                 UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken = new UsernamePasswordAuthenticationToken(
                         userDetails, null, userDetails.getAuthorities());
                 usernamePasswordAuthenticationToken

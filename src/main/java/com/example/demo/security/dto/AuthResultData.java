@@ -10,6 +10,7 @@ public class AuthResultData {
         this.message = message;
     }
 
+
     public AuthResultData() {
         this.message="ok";
     }
