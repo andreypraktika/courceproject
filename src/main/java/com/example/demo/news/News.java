@@ -23,8 +23,12 @@ public class News {
     private String newstext;
     @Column(name = "date")
     @Basic
-    @Temporal(TemporalType.TIMESTAMP)
-    private java.util.Date utilTimestamp;
+    @Temporal(TemporalType.DATE)
+    private java.util.Date date;
+    @Column(name = "time")
+    @Basic
+    @Temporal(TemporalType.TIME)
+    private java.util.Date time;
 
 
 
@@ -34,7 +38,7 @@ public class News {
                 "newsId=" + newsId +
                 ", newstitle='" + newstitle + '\'' +
                 ", newstext='" + newstext + '\'' +
-                ", utilTimestamp=" + utilTimestamp +
+
                 '}';
     }
 

@@ -7,7 +7,7 @@ const NaviBar = () => {
         <Container className="p-2">
         <Navbar.Brand className="ml-3" href="/home">My application</Navbar.Brand>
         <Nav>
-            <Nav.Link href="/campaigns">My campaign</Nav.Link>
+            <Nav.Link href="/campaigns">My campaigns</Nav.Link>
             <Nav.Link href="/profile">Profile</Nav.Link>
             <Nav.Link href="/news">News</Nav.Link>
             <Nav.Link href="/login">Login</Nav.Link>
