@@ -1,7 +1,6 @@
 import React, {Component} from "react";
 import Form from "react-bootstrap/Form";
-import Button from "react-bootstrap/Button";
-import {useHistory} from 'react-router-dom'
+import {Button,Card} from "react-bootstrap";
 export default class Login extends Component {
 
 	constructor(props) {
@@ -53,13 +52,19 @@ export default class Login extends Component {
 
 	render() {
 		return (
-			<Form>
-				<Form.Text className="text-muted">LOGIN</Form.Text>
-				<Form.Text> </Form.Text>
-				<Form.Text className="text-muted">
-					{this.state.message ? this.state.message : ''}
-				</Form.Text>
-				<Form.Group controlId="formBasicEmail">
+			<>
+			<div style={{margin:'0 auto', width: '28rem'}}>
+				<Form>
+					<Card border="primary" >
+						<Card.Header>
+							<Form.Text><h3>Login</h3></Form.Text>
+							<Form.Text className="text-muted">
+							{this.state.message ? this.state.message : ''}
+							</Form.Text>
+						</Card.Header>
+    			<Card.Body>
+      				<Card.Text>
+					  <Form.Group controlId="formBasicEmail">
 					<Form.Label>Username</Form.Label>
 					<Form.Control onChange={this.handleChange} type="text" placeholder="Username"
 								  name="username"/>
@@ -70,13 +75,18 @@ export default class Login extends Component {
 					<Form.Control onChange={this.handleChange} type="password"
 								  placeholder="Password" name="password"/>
 				</Form.Group>
-				<Form.Group controlId="formBasicCheckbox">
-					<Form.Check type="checkbox" label="Check me out"/>
+				<Form.Group style={{marginTop:'15px'}} controlId="formBasicCheckbox" >
+					<Form.Check type="checkbox" label="Check me out" />
 				</Form.Group>
-				<Button variant="primary" type="submit" onClick={this.handleRegisterClick}>
+				<Button style={{marginTop:'10px'}}variant="primary" type="submit" onClick={this.handleRegisterClick}>
 					Login
 				</Button>
-			</Form>
+      				</Card.Text>
+    			</Card.Body>
+  			</Card>
+			  </Form>	
+			</div>
+			</>
 		);
 	}
 

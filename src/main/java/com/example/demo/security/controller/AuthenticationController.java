@@ -5,16 +5,13 @@ import com.example.demo.security.dto.AuthResultData;
 import com.example.demo.security.dto.JwtBody;
 import com.example.demo.security.jwt.TokenUtil;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.DisabledException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
@@ -44,6 +41,13 @@ public class AuthenticationController {
         final var accessToken = new Cookie(ACCESS_TOKEN, token);
         response.addCookie(accessToken);
         return new AuthResultData();
+    }
+
+    @RequestMapping(value = "/logout", method = RequestMethod.GET)
+    public String logout(HttpServletResponse response) throws Exception {
+        response.setHeader("Set-Cookie", null);
+        System.out.println("logged out");
+        return "ok";
     }
 
     private void authenticate(String username, String password) throws Exception {

@@ -1,14 +1,15 @@
 package com.example.demo.news;
 
-import com.example.demo.campaign.Campaign;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
-
+import lombok.ToString;
+import com.example.demo.photosForNews.PhotosForNews;
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
+@ToString
 @Table(name = "News")
 @NoArgsConstructor
 @Getter
@@ -30,17 +31,9 @@ public class News {
     @Temporal(TemporalType.TIME)
     private java.util.Date time;
 
-
-
-    @Override
-    public String toString() {
-        return "News{" +
-                "newsId=" + newsId +
-                ", newstitle='" + newstitle + '\'' +
-                ", newstext='" + newstext + '\'' +
-
-                '}';
-    }
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinColumn(name = "news_Id")
+    private List<PhotosForNews> photos;
 
     //    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 //    @JoinColumn(name = "campaign_id")

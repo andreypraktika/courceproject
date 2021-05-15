@@ -32,7 +32,6 @@ public class User {
     private String lastname;
     @Column(name = "role")
     private String role;
-
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "user_id")
     private List<Campaign> campaigns;

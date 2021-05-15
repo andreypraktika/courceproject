@@ -9,6 +9,7 @@ import NaviBar from './components/NaviBar';
 import SignupForm from './signup/SignupForm';
 import UserProfiles from './administration/UserProfiles';
 import UserProfile from './profile/UserProfile';
+import Main from './main/Main';
 
 
 const App = () => {
@@ -18,6 +19,7 @@ const App = () => {
         <NaviBar />
         <div className="App-content">
           {/* <Route path="/campaigns" component={UserCampaigns}/> */}
+          <Route path="/home" component={Main}/>
           <Route path="/profile" component={UserProfile}/>
           <Route path="/news" component={ News }/>
           <Route path="/login" component={ Login }/>
