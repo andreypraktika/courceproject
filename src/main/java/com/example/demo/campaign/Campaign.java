@@ -14,7 +14,7 @@ import java.util.List;
 @Getter
 @Setter
 @AllArgsConstructor
-public class Campaign {
+public class    Campaign {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

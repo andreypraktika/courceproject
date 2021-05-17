@@ -5,6 +5,7 @@ import com.example.demo.security.dto.AuthResultData;
 import com.example.demo.security.dto.JwtBody;
 import com.example.demo.security.jwt.TokenUtil;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
@@ -14,6 +15,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import static com.example.demo.security.filter.JwtRequestFilter.ACCESS_TOKEN;
@@ -43,11 +45,16 @@ public class AuthenticationController {
         return new AuthResultData();
     }
 
-    @RequestMapping(value = "/logout", method = RequestMethod.GET)
-    public String logout(HttpServletResponse response) throws Exception {
+    @GetMapping(value = "/userlogout")
+    public ResponseEntity<String> logout(HttpServletResponse response, HttpServletRequest request) throws Exception {
         response.setHeader("Set-Cookie", null);
-        System.out.println("logged out");
-        return "ok";
+        for (Cookie cookie : request.getCookies()) {
+            String cookieName = cookie.getName();
+            Cookie delete = new Cookie(cookieName, null);
+            delete.setMaxAge(0);
+            response.addCookie(delete);
+        }
+        return new ResponseEntity<>("Logged out", HttpStatus.OK);
     }
 
     private void authenticate(String username, String password) throws Exception {

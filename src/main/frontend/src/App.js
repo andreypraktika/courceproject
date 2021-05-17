@@ -10,6 +10,7 @@ import SignupForm from './signup/SignupForm';
 import UserProfiles from './administration/UserProfiles';
 import UserProfile from './profile/UserProfile';
 import Main from './main/Main';
+import CreateNews from './news/CreateNews'
 
 
 const App = () => {
@@ -25,6 +26,8 @@ const App = () => {
           <Route path="/login" component={ Login }/>
           <Route path="/signup" component={ SignupForm }/>
           <Route path="/users" component={ UserProfiles }/>
+          <Route path="/createnews" component={ CreateNews }/>
+      
         </div>
       </div>
     </BrowserRouter>);
